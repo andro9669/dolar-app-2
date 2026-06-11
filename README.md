@@ -5,7 +5,7 @@ Proyecto de prueba - Arquitectura frontend y backend con seguridad simulada.
 ## Stack
 
 - Frontend: HTML + JS (sin frameworks)
-- Backend: JAR
+- Backend: Node.js
 - API externa: cot.yumsistemas.com/api
 
 ## Arquitectura
