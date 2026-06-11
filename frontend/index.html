@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Dolar app</title>
+    </head>
+    <body>
+        <input
+            id="monto"
+            type="number"
+            placeholder="Ingresá un monto en pesos"
+        />
+        <button id="convertir">Convertir</button>
+        <p id="resultado"></p>
+        <script>
+            const boton = document.getElementById("convertir");
+            const input = document.getElementById("monto");
+            const resultado = document.getElementById("resultado");
+
+            boton.addEventListener("click", () => {
+                const monto = input.value;
+                fetch("http://localhost:3000/dolar", {
+                    headers: {
+                        "x-api-key": "858478",
+                    },
+                })
+                    .then(function (respuesta) {
+                        return respuesta.json();
+                    })
+                    .then(function (datos) {
+                        resultado.textContent =
+                            monto +
+                            " pesos = $" +
+                            (monto / parseFloat(datos.promedio_o_v)).toFixed(
+                                2,
+                            ) +
+                            " dolares oficiales de compra.";
+                    });
+            });
+        </script>
+    </body>
+</html>
